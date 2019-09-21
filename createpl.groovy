@@ -8,9 +8,9 @@ pipelineJob('P1DSJ') {
             }
         }
     }
-    definition {
+    steps {
         //This is a comment
-        cps {
+        dsl {
                 script(readFileFromWorkspace('ci.groovy'))
                 sandbox()
         }
