@@ -1,2 +1,2 @@
 println("Inside the clne groovy script ")
-println("Buidling the application")
+println("Clonning the application")
