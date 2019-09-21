@@ -11,8 +11,7 @@ pipelineJob('P1DSJ') {
     steps {
         //This is a comment
         dsl {
-                script(readFileFromWorkspace('ci.groovy'))
-                sandbox()
+                external('ci.groovy')
         }
     }
 }
