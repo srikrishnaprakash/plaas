@@ -3,7 +3,7 @@ node('master') {
         println("Preparing...")
     }
     stage("Clone"){
-        println("Cloning the git...")
+        load 'app/clne.groovy'
     }
     stage("Build"){
         println("Building the app using maven")
