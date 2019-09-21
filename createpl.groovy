@@ -5,4 +5,5 @@ pipelineJob('P1DSJ') {
                 script("readFileFromWorkspace('ci.groovy')")
                 sandbox()
         }
+    }
 }
