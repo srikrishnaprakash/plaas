@@ -1,7 +1,7 @@
 pipelineJob('P1DSJ') {
     definition {
         cps {
-                script("readFileFromWorkspace('ci.groovy')")
+                script(readFileFromWorkspace('ci.groovy'))
                 sandbox()
         }
     }
