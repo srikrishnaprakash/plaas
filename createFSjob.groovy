@@ -1,6 +1,8 @@
 freeStyleJob('FldrCreateDSJ') {
-     scm {
-        github('srikrishnaprakash/psl', 'master')
+    git {
+        remote {
+            url('git@github.com:srikrishnaprakash/pls.git')
+        }
     }
     steps {
         dsl {
