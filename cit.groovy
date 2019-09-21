@@ -1,4 +1,8 @@
 node('master') {
+    git(
+			url: "$ApplicationRepo",
+			branch: "master"
+		)
     stage("Prepare"){
         println("Preparing...")
     }
