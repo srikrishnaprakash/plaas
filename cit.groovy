@@ -1,6 +1,6 @@
 node('master') {
     git(
-			url: "$ApplicationRepo",
+			url: "$ApplicationRepository",
 			branch: "master"
 		)
     stage("Prepare"){
