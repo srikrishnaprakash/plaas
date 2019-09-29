@@ -10,8 +10,8 @@ pipelineJob("$BUName/$ProductName/CICD_$AppName") {
         description('select the branch')
         choiceType('SINGLE_SELECT')
         groovyScript {
-            script("return['master','develop']")
-            fallbackScript('return ["error"]')
+            script('["master", "develop"]')
+            fallbackScript('"fallback choice"')
         }
     }
 
