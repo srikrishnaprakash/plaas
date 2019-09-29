@@ -7,7 +7,8 @@ pipelineJob("$BUName/$ProductName/CICD_$AppName") {
     stringParam('NodeName',"$NodeName","")
     stringParam('AppName',"$AppName","")
     activeChoiceParam('Branch') {
-        description('select the branch'
+        description('select the branch')
+        choiceType('SINGLE_SELECT')
         groovyScript {
             script("return['master','develop']")
             fallbackScript('return ["error"]')
