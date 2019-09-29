@@ -1,12 +1,12 @@
-node('master') {
-    git(
-			url: "$ApplicationRepository",
-			branch: "master"
-		)
+node("$NodeName") {
     stage("Prepare"){
         println("Preparing...")
+        git(
+			url: "git@github.com:srikrishnaprakash/pls.git",
+			branch: "master"
+	    )
     }
-    stage("Clone"){
+    stage("Clone Application"){
         load 'app/clne.groovy'
     }
     stage("Build"){

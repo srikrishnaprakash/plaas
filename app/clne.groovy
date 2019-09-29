@@ -1,2 +1,6 @@
-println("Inside the clne groovy script ")
-println("Clonning the application")
+println("Clonning the application...")
+git(
+    url: "$AppRepo",
+    branch: "$Branch"
+)
+println("Completed")
