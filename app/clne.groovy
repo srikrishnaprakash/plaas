@@ -1,5 +1,5 @@
 println("Clonning the application...")
-dir('app') {
+dir('appl') {
     git(
         url: "$AppRepo",
         branch: "$Branch"
