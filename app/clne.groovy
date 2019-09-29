@@ -1,6 +1,8 @@
 println("Clonning the application...")
-git(
-    url: "$AppRepo",
-    branch: "$Branch"
-)
+dir('app') {
+    git(
+        url: "$AppRepo",
+        branch: "$Branch"
+    )
+}
 println("Completed")

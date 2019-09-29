@@ -3,13 +3,17 @@ node("$NodeName") {
     stage("Prepare"){
         println("Preparing...")
         git(
-			url: "git@github.com:srikrishnaprakash/pls.git",
-			branch: "master"
+                url: "git@github.com:srikrishnaprakash/pls.git",
+                branch: "master"
 	    )
-        git(
-			url: "git@github.com:srikrishnaprakash/conf.git",
-			branch: "master"
-	    )
+        dir('config') {
+          git(
+                url: "git@github.com:srikrishnaprakash/conf.git",
+                branch: "master"
+	        )  
+        }
+        
+        
     }
     stage("Clone Application"){
         load 'app/clne.groovy'
