@@ -1,8 +1,13 @@
 node("$NodeName") {
+    wrks = env.WORKSPACE
     stage("Prepare"){
         println("Preparing...")
         git(
 			url: "git@github.com:srikrishnaprakash/pls.git",
+			branch: "master"
+	    )
+        git(
+			url: "git@github.com:srikrishnaprakash/conf.git",
 			branch: "master"
 	    )
     }
@@ -10,7 +15,7 @@ node("$NodeName") {
         load 'app/clne.groovy'
     }
     stage("Build"){
-        println("Building the app using maven")
+        load 'app/bld.groovy'
     }
     stage("Test"){
         println("Testing...")
