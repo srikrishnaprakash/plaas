@@ -26,5 +26,6 @@ node("$NodeName") {
     }
     stage("Deploy"){
         println("Deploying...")
+        bat "scripts/dep.bat"
     }
 }
