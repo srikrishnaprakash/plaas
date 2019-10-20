@@ -34,6 +34,7 @@ pipelineJob("$BUName/$ProductName/CICD_$AppName") {
     }
 
   }
+  }
   definition {
         cps {
 			def jobScript = readFileFromWorkspace('cit.groovy')
