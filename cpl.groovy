@@ -17,6 +17,23 @@ pipelineJob("$BUName/$ProductName/CICD_$AppName") {
     }
 
   }
+  pipelineJob("$BUName/$ProductName/CICTCD_$AppName") {
+  parameters {
+    stringParam('AppRepo',"$ApplicationRepo","GIT URL")
+    stringParam('UnitTestTool',"$UnitTestRun","")
+    stringParam('NodeName',"$NodeName","")
+    stringParam('AppName',"$AppName","")
+    activeChoiceParam('Branch') {
+        description('select the branch')
+        filterable()
+        choiceType('SINGLE_SELECT')
+        groovyScript {
+            script('["master", "develop"]')
+            fallbackScript('"fallback choice"')
+        }
+    }
+
+  }
   definition {
         cps {
 			def jobScript = readFileFromWorkspace('cit.groovy')
