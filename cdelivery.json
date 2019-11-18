@@ -1,0 +1,122 @@
+{
+    "environments" : [ 
+        { 
+            "name" : "DEV",
+            "available" : true,
+            "teardown" : false,
+            "btool" : "maven",
+            "artifact" : {
+                "revision" : "develop"
+            },
+            "deployment": {
+                "method" : "shell",
+                "server" : "192.168.1.12",
+                "user" : "jenkins",
+                "apath" : "/tmp",
+                "script" : "tomdeploy.sh"
+            }
+        },
+        { 
+            "name" : "QA",
+            "available" : false,
+            "teardown" : true,
+            "btool" : "maven",
+            "artifact" : {
+                "revision" : "releaseqa",
+                "opcode" : "put",
+                "path" : "http://nexus.doara.com/qasnapshot",
+                "merge" : true,
+                "source" : "develop"
+            },
+            "test" :[
+                {
+                    "name" : "integration",
+                    "type" : "shell",
+                    "scriptFile" : "seleniuminttest.sh",
+                    "param" : "SystemIntegration"
+                },
+                {
+                    "name" : "system",
+                    "type" : "python",
+                    "scriptFile" : "seleniumsystest.py"
+                }
+            ],
+            "deployment": {
+                "method" : "shell",
+                "server" : "192.168.1.12",
+                "user" : "jenkins",
+                "apath" : "/tmp",
+                "script" : "tomdeploy.sh"
+            }
+        },
+        { 
+            "name" : "UAT",
+            "available" : false,
+            "teardown" : false,
+            "btool" : "maven",
+            "artifact" : {
+                "revision" : "releaseqa",
+                "opcode" : "get",
+                "path" : "http://nexus.doara.com/uatsnapshot",
+                "merge" : false,
+                "source" : ""
+            },
+            "test" :[
+                {
+                    "name" : "regression",
+                    "type" : "python",
+                    "scriptFile" : "regressiontest.py"
+                },
+                {
+                    "name" : "performance",
+                    "type" : "shell",
+                    "scriptFile" : "loadrunner.sh"
+                }
+            ],
+            "deployment": {
+                "method" : "shell",
+                "server" : "192.168.1.12",
+                "user" : "jenkins",
+                "apath" : "/tmp",
+                "script" : "tomdeploy.sh"
+            }
+        },
+        { 
+            "name" : "PILOT1",
+            "available" : false,
+            "btool" : "maven",
+            "artifact" : {
+                "revision" : "",
+                "opcode" : "get",
+                "path" : "http://nexus.doara.com/qasnapshot",
+                "merge" : false,
+                "source" : ""
+            },
+            "test" :[
+                {
+                    "name" : "functional",
+                    "type" : "python",
+                    "scriptFile" : "cucumber.py"
+                },
+                {
+                    "name" : "leanregression",
+                    "type" : "python",
+                    "scriptFile" : "leanregression.py"
+                }
+            ],
+            "deployment": {
+                "method" : "shell",
+                "server" : "192.168.1.12",
+                "user" : "jenkins",
+                "apath" : "/tmp",
+                "script" : "tomdeploy.sh"
+            }
+        }
+    ],
+    "PROD" : {
+        "strategy" : "auto",
+        "codemerge" : true,
+        "deploy" : false,
+        "deploymnt" : "bluegreen"
+    }
+}
