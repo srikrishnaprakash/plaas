@@ -7,8 +7,9 @@ node ("Srikpkash") {
     }
     stage ("AppointingTools") {
         script {
-            println("The build node is ${Agent-Node}")
-            println("The branch revision is ${BName}")
+            println("The branch revision is ${Revision}")
+            println("${env.ApplicationRepositoryURL}")
+            println("The build node is ${AgentNode}")
         }
     }
 }
