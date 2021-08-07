@@ -1,16 +1,14 @@
 import groovy.json.JsonSlurperClassic
 import jenkins.model.*
-pipeline {
-    node ("Srikpkash") {
-        wrks = env.WORKSPACE
-        stage ("Checkout Code") {
-            
-        }
-        stage ("AppointingTools") {
-            script {
-                println("The build node is ${Agent-Node}")
-                println("The branch revision is ${BName}")
-            }
+node ("Srikpkash") {
+    wrks = env.WORKSPACE
+    stage ("Checkout Code") {
+        println("Checkout")
+    }
+    stage ("AppointingTools") {
+        script {
+            println("The build node is ${Agent-Node}")
+            println("The branch revision is ${BName}")
         }
     }
 }
