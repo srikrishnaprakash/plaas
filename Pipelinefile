@@ -7,8 +7,9 @@ node ("Srikpkash") {
     }
     stage ("AppointingTools") {
         script {
+            val = "$ApplicationName-ARU"
             println("The branch revision is ${Revision}")
-            println("${env.ApplicationRepositoryURL}")
+            println(env["${val}"])
             println("The build node is ${AgentNode}")
         }
     }
